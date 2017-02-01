@@ -1,8 +1,8 @@
 {
-  "name": "input-moment",
-  "version": "0.3.2",
-  "description": "React datetime picker powered by momentjs",
-  "main": "index.js",
+  "name": "awesome-react-datetime",
+  "version": "0.1.0",
+  "description": "React datetime picker",
+  "main": "lib/input-moment.js",
   "scripts": {
     "start": "webpack-dev-server -c --port=8888",
     "build-js": "babel src --out-dir lib && webpack -p",
@@ -23,6 +23,12 @@
     "react": "^0.14.0 || ^15.0.0",
     "react-dom": "^0.14.0 || ^15.0.0"
   },
+  "dependencies": {
+    "blacklist": "^1.1.4",
+    "classnames": "^2.2.0",
+    "lodash": "^3.10.1",
+    "react-input-slider": "^1.5.0"
+  },
   "devDependencies": {
     "babel-core": "^6.1.2",
     "babel-loader": "^6.0.1",
@@ -40,12 +46,10 @@
     "webpack": "^1.12.3",
     "webpack-dev-server": "^1.14.0"
   },
-  "dependencies": {
-    "blacklist": "^1.1.4",
-    "classnames": "^2.2.0",
-    "lodash": "^3.10.1",
-    "react-input-slider": "^1.5.0"
-  },
+  "files": [
+    "lib",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bacher/input-moment.git"
