@@ -7,7 +7,7 @@ The design is from [dribbble](https://dribbble.com/shots/1439965-Due-Date-and-Ti
 
 ### Installation
 ``` sh
-npm i input-moment --save
+npm i --save awesome-react-datetime
 ```
 
 **Notice:** This module requires [moment](https://www.npmjs.com/package/moment) as a [peerDependency](https://docs.npmjs.com/files/package.json#peerdependencies).
