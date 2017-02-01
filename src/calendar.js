@@ -43,10 +43,20 @@ module.exports = React.createClass({
         const prevMonth = month - 1;
         const nextMonth = month + 1;
 
+        const prevBounds = [d1 - d2_ + 1, d1 + 1];
+        if (prevMonth[1] - prevMonth[0] > 7) {
+            prevMonth[0] += 7;
+        }
+
+        const nextBounds = [1, 42 - d3 - d2_ + 1];
+        if (nextBounds[1] - nextBounds[0] > 7) {
+            nextBounds[1] -= 7;
+        }
+
         const days = [].concat(
-            range(d1 - d2_ + 1, d1 + 1).map(date => ({ month: prevMonth, date })),
-            range(1, d3 + 1)           .map(date => ({ month, date })),
-            range(1, 42 - d3 - d2_ + 1).map(date => ({ month: nextMonth, date }))
+            range(prevBounds[0], prevBounds[1]).map(date => ({ month: prevMonth, date })),
+            range(1, d3 + 1)                   .map(date => ({ month, date })),
+            range(nextBounds[0], nextBounds[1]).map(date => ({ month: nextMonth, date }))
         );
 
         const weeks = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
