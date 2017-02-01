@@ -15,10 +15,16 @@ module.exports = React.createClass({
 
         return (
             <div className={cx('m-input-moment', this.props.className)} {...props}>
-                <Calendar value={m} onChange={this.props.onChange} />
-                <Time value={m} onChange={this.props.onChange} />
+                <Calendar value={m} onChange={value => this._onChange(value)} />
+                <Time value={m} onChange={value => this._onChange(value)} />
             </div>
         );
+    },
+
+    _onChange(moment) {
+        if (this.props.onChange) {
+            this.props.onChange(moment.toDate());
+        }
     }
 
 });

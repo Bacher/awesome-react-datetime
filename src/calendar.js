@@ -45,7 +45,7 @@ module.exports = React.createClass({
 
         const days = [].concat(
             range(d1 - d2_ + 1, d1 + 1).map(date => ({ month: prevMonth, date })),
-            range(1, d3 + 1)          .map(date => ({ month, date })),
+            range(1, d3 + 1)           .map(date => ({ month, date })),
             range(1, 42 - d3 - d2_ + 1).map(date => ({ month: nextMonth, date }))
         );
 

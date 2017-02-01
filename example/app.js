@@ -38,8 +38,10 @@ var App = React.createClass({
     );
   },
 
-  handleChange(m) {
-    this.setState({ m });
+  handleChange(value) {
+    this.setState({
+        m: moment(value)
+    });
   },
 
 });
