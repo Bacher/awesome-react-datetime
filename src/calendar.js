@@ -59,8 +59,6 @@ module.exports = React.createClass({
             range(nextBounds[0], nextBounds[1]).map(date => ({ month: nextMonth, date }))
         );
 
-        const weeks = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
-
         return (
             <div className={cx('m-calendar', this.props.className)}>
                 <div className="toolbar">
@@ -76,7 +74,7 @@ module.exports = React.createClass({
                 <table>
                     <thead>
                         <tr>
-                            {weeks.map((w, i) => <td key={i}>{w}</td>)}
+                            {range(1, 8).map(i => <td key={i}>{moment.weekdaysMin(i)}</td>)}
                         </tr>
                     </thead>
 
