@@ -55,11 +55,11 @@ module.exports = React.createClass({
             <div className={cx('m-calendar', this.props.className)}>
                 <div className="toolbar">
                     <button type="button" className="prev-month" onClick={this.prevMonth}>
-                        <i className={this.props.prevMonthIcon} />
+                        &lt;
                     </button>
                     <span className="current-date">{m.format('MMMM YYYY')}</span>
                     <button type="button" className="next-month" onClick={this.nextMonth}>
-                        <i className={this.props.nextMonthIcon} />
+                        &gt;
                     </button>
                 </div>
 

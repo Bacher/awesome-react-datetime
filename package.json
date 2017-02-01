@@ -48,7 +48,8 @@
   },
   "files": [
     "lib",
-    "dist"
+    "dist",
+    "README.md"
   ],
   "repository": {
     "type": "git",

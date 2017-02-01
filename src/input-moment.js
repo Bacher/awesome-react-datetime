@@ -6,18 +6,12 @@ const Calendar  = require('./calendar');
 const Time      = require('./time');
 
 module.exports = React.createClass({
-    displayName: 'InputMoment',
 
-    getDefaultProps() {
-        return {
-            prevMonthIcon: 'ion-ios-arrow-left',
-            nextMonthIcon: 'ion-ios-arrow-right'
-        };
-    },
+    displayName: 'InputMoment',
 
     render() {
         const m     = this.props.moment;
-        const props = blacklist(this.props, 'className', 'moment', 'prevMonthIcon', 'nextMonthIcon', 'onSave', 'onChange');
+        const props = blacklist(this.props, 'className', 'moment', 'onSave', 'onChange');
 
         props.className = cx('m-input-moment', this.props.className);
 
@@ -26,8 +20,6 @@ module.exports = React.createClass({
                 <Calendar
                     moment={m}
                     onChange={this.props.onChange}
-                    prevMonthIcon={this.props.prevMonthIcon}
-                    nextMonthIcon={this.props.nextMonthIcon}
                 />
                 <Time
                     moment={m}

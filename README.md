@@ -1,9 +1,9 @@
 # input-moment
-React datetime picker powered by [momentjs](http://momentjs.com)
+React datetime picker powered by [momentjs](http://momentjs.com).
 
-The design is from https://dribbble.com/shots/1439965-Due-Date-and-Time-Picker.
+This repository is fork of [wangzuo/input-moment](https://github.com/wangzuo/input-moment).
 
-The icon is from [ionicons](http://ionicons.com/).
+The design is from [dribbble](https://dribbble.com/shots/1439965-Due-Date-and-Time-Picker).
 
 ### Installation
 ``` sh
@@ -11,9 +11,6 @@ npm i input-moment --save
 ```
 
 **Notice:** This module requires [moment](https://www.npmjs.com/package/moment) as a [peerDependency](https://docs.npmjs.com/files/package.json#peerdependencies).
-
-### Demo
-http://wangzuo.github.io/input-moment
 
 ### Usage
 ``` javascript
