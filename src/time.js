@@ -1,6 +1,6 @@
 const cx          = require('classnames');
 const React       = require('react');
-const InputSlider = require('react-input-slider');
+const SuperSlider = require('./super-slider');
 
 module.exports = React.createClass({
 
@@ -51,11 +51,10 @@ module.exports = React.createClass({
                 </div>
 
                 <div className="sliders">
-                    <InputSlider
-                        className="u-slider-time"
-                        xmin={10}
-                        xmax={19}
-                        x={m.hour()}
+                    <SuperSlider
+                        min={10}
+                        max={19}
+                        value={m.hour()}
                         onChange={this.changeHours}
                     />
                 </div>
@@ -63,14 +62,13 @@ module.exports = React.createClass({
         );
     },
 
-    changeHours(pos) {
-        const m     = this.props.value;
-        const hours = parseInt(pos.x, 10);
+    changeHours(value) {
+        const m = this.props.value;
 
-        m.hours(hours);
+        m.hours(value);
 
         this.setState({
-            hoursInInput: hours
+            hoursInInput: value
         });
 
         this.props.onChange(m);

@@ -1,25 +1,30 @@
 @import 'variables';
 
-.u-slider-time {
+.super-slider {
+  @slider-height: 24px;
+  @slider-handle-size: 20px;
+  @slider-size: 4px;
+  @slider-fix: 20px;
+
   position: relative;
   display: inline-block;
-  background-color: @color-gray;
-  border-radius: 3px;
-  height: @slider-size;
   width: 100%;
+  height: @slider-height;
+  vertical-align: top;
   cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
 
-  .value {
-    position: absolute;
-    background-color: @color-blue;
+  .slider {
+    margin-top: 10px;
+    height: @slider-size;
     border-radius: 3px;
-    top: 0;
-    height: 100%;
+    background-color: @color-gray;
   }
 
   .handle {
     position: absolute;
-    width: @slider-size;
+    width: 0;
     height: @slider-size;
 
     &:after {
