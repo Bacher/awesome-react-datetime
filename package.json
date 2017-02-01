@@ -1,6 +1,6 @@
 {
   "name": "awesome-react-datetime",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "React datetime picker",
   "main": "lib/input-moment.js",
   "scripts": {
