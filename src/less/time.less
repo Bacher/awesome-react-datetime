@@ -2,7 +2,7 @@
 
 .m-time {
   color: @color-white;
-  padding-top: 50px;
+  padding-top: 20px;
 
   .showtime {
     text-align: center;
@@ -28,18 +28,63 @@
     margin-bottom: 10px;
   }
 
+  .time__line {
+    &_first {
+      padding-bottom: 1px;
+    }
+  }
+
   .sliders {
-    padding: 0 10px;
+    padding: 8px 10px;
   }
 
   .time {
     width: 65px;
     height: 65px;
     display: inline-block;
-    font-size: 38px;
-    line-height: 65px;
     background-color: @color-blue;
     border-radius: 3px;
+    vertical-align: top;
+
+    &_hours {
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 38px;
+      line-height: 65px;
+      text-align: center;
+    }
+
+    &_minutes {
+      padding: 4px;
+    }
+
+    &_invalid {
+      background-color: red;
+    }
+  }
+
+  .time__chunk {
+    @size: 28px;
+
+    display: inline-block;
     text-align: center;
+    line-height: @size;
+    width: @size;
+    height: @size;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    //font-weight: bold;
+
+    &:first-child {
+      margin-right: 1px;
+    }
+
+    &_active {
+      color: @color-blue;
+      background: #FFF;
+      border-radius: 2px;
+    }
   }
 }

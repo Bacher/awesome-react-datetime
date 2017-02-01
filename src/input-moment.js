@@ -17,26 +17,22 @@ module.exports = React.createClass({
 
     render() {
         const m     = this.props.moment;
-        const props = blacklist(this.props, 'className', 'moment', 'prevMonthIcon', 'nextMonthIcon', 'onSave');
+        const props = blacklist(this.props, 'className', 'moment', 'prevMonthIcon', 'nextMonthIcon', 'onSave', 'onChange');
 
         props.className = cx('m-input-moment', this.props.className);
 
         return (
             <div {...props}>
-                <div className="tabs">
-                    <Calendar
-                        className="tab is-active"
-                        moment={m}
-                        onChange={this.props.onChange}
-                        prevMonthIcon={this.props.prevMonthIcon}
-                        nextMonthIcon={this.props.nextMonthIcon}
-                    />
-                    <Time
-                        className="tab is-active"
-                        moment={m}
-                        onChange={this.props.onChange}
-                    />
-                </div>
+                <Calendar
+                    moment={m}
+                    onChange={this.props.onChange}
+                    prevMonthIcon={this.props.prevMonthIcon}
+                    nextMonthIcon={this.props.nextMonthIcon}
+                />
+                <Time
+                    moment={m}
+                    onChange={this.props.onChange}
+                />
 
                 <button type="button" className="im-btn btn-save ion-checkmark"
                         onClick={this.handleSave}>
