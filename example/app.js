@@ -30,9 +30,8 @@ var App = React.createClass({
           />
         </div>
         <InputMoment
-          moment={this.state.m}
+          value={this.state.m}
           onChange={this.handleChange}
-          onSave={this.handleSave}
         />
         </form>
       </div>
@@ -43,9 +42,6 @@ var App = React.createClass({
     this.setState({ m });
   },
 
-  handleSave() {
-    console.log('saved', this.state.m.format('llll'));
-  }
 });
 
 ReactDOM.render(<App/>, document.getElementById('app'));

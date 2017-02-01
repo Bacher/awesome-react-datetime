@@ -31,7 +31,7 @@ module.exports = React.createClass({
         const currentMonth  = currentMoment.month();
         const currentDate   = currentMoment.date();
 
-        const m  = this.props.moment;
+        const m  = this.props.value;
         const d  = m.date();
         const d1 = m.clone().subtract(1, 'month').endOf('month').date();
         const d2 = m.clone().date(1).isoWeekday();
@@ -92,7 +92,7 @@ module.exports = React.createClass({
     },
 
     selectDate(dayInfo) {
-        const m = this.props.moment;
+        const m = this.props.value;
 
         m.month(dayInfo.month);
         m.date(dayInfo.date);
@@ -102,11 +102,11 @@ module.exports = React.createClass({
 
     prevMonth(e) {
         e.preventDefault();
-        this.props.onChange(this.props.moment.subtract(1, 'month'));
+        this.props.onChange(this.props.value.subtract(1, 'month'));
     },
 
     nextMonth(e) {
         e.preventDefault();
-        this.props.onChange(this.props.moment.add(1, 'month'));
+        this.props.onChange(this.props.value.add(1, 'month'));
     }
 });

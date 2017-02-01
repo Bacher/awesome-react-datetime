@@ -10,21 +10,13 @@ module.exports = React.createClass({
     displayName: 'InputMoment',
 
     render() {
-        const m     = this.props.moment;
-        const props = blacklist(this.props, 'className', 'moment', 'onChange');
-
-        props.className = cx('m-input-moment', this.props.className);
+        const m = moment(this.props.value);
+        const props = blacklist(this.props, 'className', 'value', 'onChange');
 
         return (
-            <div {...props}>
-                <Calendar
-                    moment={m}
-                    onChange={this.props.onChange}
-                />
-                <Time
-                    moment={m}
-                    onChange={this.props.onChange}
-                />
+            <div className={cx('m-input-moment', this.props.className)} {...props}>
+                <Calendar value={m} onChange={this.props.onChange} />
+                <Time value={m} onChange={this.props.onChange} />
             </div>
         );
     }

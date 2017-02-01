@@ -3,17 +3,18 @@ const React       = require('react');
 const InputSlider = require('react-input-slider');
 
 module.exports = React.createClass({
+
     displayName: 'Time',
 
     getInitialState() {
         return {
             invalidHours: false,
-            hoursInInput: this.props.moment.hour()
+            hoursInInput: this.props.value.hour()
         };
     },
 
     render() {
-        const m       = this.props.moment;
+        const m       = this.props.value;
         const minutes = m.minute();
 
         const { invalidHours, hoursInInput } = this.state;
@@ -63,8 +64,9 @@ module.exports = React.createClass({
     },
 
     changeHours(pos) {
-        const m = this.props.moment;
+        const m     = this.props.value;
         const hours = parseInt(pos.x, 10);
+
         m.hours(hours);
 
         this.setState({
@@ -90,7 +92,7 @@ module.exports = React.createClass({
                     hoursInInput: value
                 });
 
-                const m = this.props.moment;
+                const m = this.props.value;
                 m.hours(number);
                 this.props.onChange(m);
                 return;
@@ -104,7 +106,7 @@ module.exports = React.createClass({
     },
 
     changeMinutes(minutes) {
-        const m = this.props.moment;
+        const m = this.props.value;
         m.minutes(minutes);
         this.props.onChange(m);
     }

@@ -15,7 +15,7 @@ npm install --save awesome-react-datetime
 ### Usage
 ```html
 <InputMoment
-    moment={this.state.moment}
+    value={this.state.moment}
     onChange={this.handleChange}
 />
 ```
