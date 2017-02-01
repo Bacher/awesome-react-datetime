@@ -1,3 +1,4 @@
+const React = require('react');
 
 module.exports = React.createClass({
 
@@ -10,8 +11,8 @@ module.exports = React.createClass({
 
     componentWillUnmount() {
         if (this._handlers) {
-            document.body.removeEventListener('mousemove', this._handlers.move);
-            document.body.removeEventListener('mouseup', this._handlers.up);
+            document.removeEventListener('mousemove', this._handlers.move);
+            document.removeEventListener('mouseup', this._handlers.up);
             this._handlers = null;
         }
     },
