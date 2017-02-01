@@ -28,4 +28,6 @@ node_modules
 
 .publish
 
+.idea
+
 example/bundle*
