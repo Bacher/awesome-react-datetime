@@ -13,13 +13,10 @@ npm install --save awesome-react-datetime
 **Notice:** This module requires [moment](https://www.npmjs.com/package/moment) as a [peerDependency](https://docs.npmjs.com/files/package.json#peerdependencies).
 
 ### Usage
-``` javascript
+```html
 <InputMoment
-  moment={this.state.moment}
-  onChange={this.handleChange}
-  onSave={this.handleSave}
-  prevMonthIcon="ion-ios-arrow-left" // default
-  nextMonthIcon="ion-ios-arrow-right" // default
+    moment={this.state.moment}
+    onChange={this.handleChange}
 />
 ```
 Check [app.js](https://github.com/wangzuo/input-moment/blob/master/example/app.js) for a working example.

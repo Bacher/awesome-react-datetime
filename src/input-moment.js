@@ -11,7 +11,7 @@ module.exports = React.createClass({
 
     render() {
         const m     = this.props.moment;
-        const props = blacklist(this.props, 'className', 'moment', 'onSave', 'onChange');
+        const props = blacklist(this.props, 'className', 'moment', 'onChange');
 
         props.className = cx('m-input-moment', this.props.className);
 
