@@ -13,6 +13,10 @@ module.exports = React.createClass({
         const m = moment(this.props.value);
         const props = blacklist(this.props, 'className', 'value', 'onChange');
 
+        if (this.props.width) {
+            props.style = { width: `${this.props.width}px` };
+        }
+
         return (
             <div className={cx('m-input-moment', this.props.className)} {...props}>
                 <Calendar value={m} onChange={value => this._onChange(value)} />
