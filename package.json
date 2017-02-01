@@ -15,7 +15,8 @@
   "github-pages-deploy": {
     "src": "example"
   },
-  "author": "Wang Zuo",
+  "author": "Ilya 'Bacher' Lebedev <bacherko@gmail.com>",
+  "originalAuthor": "Wang Zuo",
   "license": "ISC",
   "peerDependencies": {
     "moment": "^2.10.6",
@@ -47,7 +48,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wangzuo/input-moment.git"
+    "url": "git+https://github.com/bacher/input-moment.git"
   },
   "keywords": [
     "react",
@@ -58,7 +59,7 @@
     "moment"
   ],
   "bugs": {
-    "url": "https://github.com/wangzuo/input-moment/issues"
+    "url": "https://github.com/bacher/input-moment/issues"
   },
-  "homepage": "https://github.com/wangzuo/input-moment#readme"
+  "homepage": "https://github.com/bacher/input-moment#readme"
 }
