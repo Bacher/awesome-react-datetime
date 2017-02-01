@@ -34,17 +34,19 @@ module.exports = React.createClass({
         const m  = this.props.moment;
         const d  = m.date();
         const d1 = m.clone().subtract(1, 'month').endOf('month').date();
-        const d2 = m.clone().date(1).day() - 1;
+        const d2 = m.clone().date(1).isoWeekday();
         const d3 = m.clone().endOf('month').date();
+
+        const d2_ = (d2 === 1 ? 7 : d2 - 1);
 
         const month     = m.month();
         const prevMonth = month - 1;
         const nextMonth = month + 1;
 
         const days = [].concat(
-            range(d1 - d2 + 1, d1 + 1).map(date => ({ month: prevMonth, date })),
+            range(d1 - d2_ + 1, d1 + 1).map(date => ({ month: prevMonth, date })),
             range(1, d3 + 1)          .map(date => ({ month, date })),
-            range(1, 42 - d3 - d2 + 1).map(date => ({ month: nextMonth, date }))
+            range(1, 42 - d3 - d2_ + 1).map(date => ({ month: nextMonth, date }))
         );
 
         const weeks = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];

@@ -33,17 +33,8 @@ module.exports = React.createClass({
                     moment={m}
                     onChange={this.props.onChange}
                 />
-
-                <button type="button" className="im-btn btn-save ion-checkmark"
-                        onClick={this.handleSave}>
-                    Save
-                </button>
             </div>
         );
-    },
-
-    handleSave(e) {
-        e.preventDefault();
-        if (this.props.onSave) this.props.onSave();
     }
+
 });
