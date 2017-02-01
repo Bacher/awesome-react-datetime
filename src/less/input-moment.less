@@ -5,10 +5,13 @@
 
 .m-input-moment {
   display: inline-block;
-  width: 300px;
+  width: 320px;
   padding: 12px 15px;
   border-radius: 3px;
   border: 1px solid @color-gray;
   background: #fff;
-  box-sizing: content-box;
+
+  &, *, *:before, *:after {
+    box-sizing: border-box;
+  }
 }
