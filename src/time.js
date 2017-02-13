@@ -106,6 +106,8 @@ module.exports = React.createClass({
     changeMinutes(minutes) {
         const m = this.props.value;
         m.minutes(minutes);
+        m.seconds(0);
+        m.milliseconds(0);
         this.props.onChange(m);
     }
 });
