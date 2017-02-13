@@ -16,30 +16,30 @@ module.exports = React.createClass({
             props.style = { width: `${this.props.width}px` };
         }
 
-        let timeValue;
+        let m;
 
         if (this.props.value == null) {
-            timeValue = moment();
+            m = moment();
 
             if (this.props.defaultTime) {
                 const [hours, minutes] = this.props.defaultTime.split(':').map(Number);
-                timeValue.hours(hours);
-                timeValue.minutes(minutes);
+                m.hours(hours);
+                m.minutes(minutes);
             } else {
-                timeValue.minutes(0);
+                m.minutes(0);
             }
 
-            timeValue.seconds(0);
-            timeValue.milliseconds(0);
+            m.seconds(0);
+            m.milliseconds(0);
 
         } else {
-            timeValue = moment(this.props.value);
+            m = moment(this.props.value);
         }
 
         return (
             <div className={cx('m-input-moment', this.props.className)} {...props}>
-                <Calendar value={this.props.value} onChange={value => this._onChange(value)} />
-                <Time value={timeValue} onChange={value => this._onChange(value)} />
+                <Calendar value={m} isEmpty={this.props.value == null} onChange={value => this._onChange(value)} />
+                <Time value={m} onChange={value => this._onChange(value)} />
             </div>
         );
     },

@@ -31,6 +31,7 @@ var App = React.createClass({
         </div>
         <InputMoment
           value={this.state.m}
+          defaultTime="19:00"
           onChange={this.handleChange}
         />
         </form>

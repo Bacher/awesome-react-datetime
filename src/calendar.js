@@ -32,7 +32,7 @@ module.exports = React.createClass({
         const currentDate   = currentMoment.date();
 
         const isEmpty = this.props.value == null;
-        const m  = isEmpty ? moment() : moment(this.props.value);
+        const m  = this.props.value;
         const d  = m.date();
         const d1 = m.clone().subtract(1, 'month').endOf('month').date();
         const d2 = m.clone().date(1).isoWeekday();
@@ -88,7 +88,7 @@ module.exports = React.createClass({
                                     i={dayInfo.date}
                                     isCurrentMonth={month === dayInfo.month}
                                     isCurrentDate={currentMonth === dayInfo.month && currentDate === dayInfo.date}
-                                    selected={dayInfo.month === month && dayInfo.date === d && !isEmpty}
+                                    selected={dayInfo.month === month && dayInfo.date === d && !this.props.isEmpty}
                                     onClick={() => this.selectDate(dayInfo)}
                                 />
                             ))}
@@ -101,7 +101,7 @@ module.exports = React.createClass({
     },
 
     selectDate(dayInfo) {
-        const m = this._getMoment();
+        const m = this.props.value;
 
         m.month(dayInfo.month);
         m.date(dayInfo.date);
@@ -111,15 +111,12 @@ module.exports = React.createClass({
 
     prevMonth(e) {
         e.preventDefault();
-        this.props.onChange(this._getMoment().subtract(1, 'month'));
+        this.props.onChange(this.props.value.subtract(1, 'month'));
     },
 
     nextMonth(e) {
         e.preventDefault();
-        this.props.onChange(this._getMoment().add(1, 'month'));
+        this.props.onChange(this.props.value.add(1, 'month'));
     },
 
-    _getMoment() {
-        return moment(this.props.value || undefined);
-    },
 });
