@@ -12,7 +12,7 @@ var App = React.createClass({
 
   getInitialState() {
     return {
-      m: moment()
+      m: null
     };
   },
 
@@ -25,7 +25,7 @@ var App = React.createClass({
         <div className="input">
           <input
             type="text"
-            value={this.state.m.format('llll')}
+            value={String(this.state.m)}
             readOnly
           />
         </div>
