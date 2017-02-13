@@ -10,7 +10,7 @@ module.exports = React.createClass({
     displayName: 'InputMoment',
 
     render() {
-        const props = blacklist(this.props, 'className', 'value', 'onChange');
+        const props = blacklist(this.props, 'className', 'value', 'defaultTime', 'onChange');
 
         if (this.props.width) {
             props.style = { width: `${this.props.width}px` };
@@ -20,9 +20,18 @@ module.exports = React.createClass({
 
         if (this.props.value == null) {
             timeValue = moment();
-            timeValue.minutes(0);
+
+            if (this.props.defaultTime) {
+                const [hours, minutes] = this.props.defaultTime.split(':').map(Number);
+                timeValue.hours(hours);
+                timeValue.minutes(minutes);
+            } else {
+                timeValue.minutes(0);
+            }
+
             timeValue.seconds(0);
             timeValue.milliseconds(0);
+
         } else {
             timeValue = moment(this.props.value);
         }
