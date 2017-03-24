@@ -10,7 +10,7 @@ module.exports = React.createClass({
     displayName: 'InputMoment',
 
     render() {
-        const passProps = blacklist(this.props, 'className', 'value', 'onlyFuture', 'defaultTime', 'onChange');
+        const passProps = blacklist(this.props, 'className', 'value', 'onlyFuture', 'onlyWorkDays', 'defaultTime', 'onChange');
 
         if (this.props.width) {
             passProps.style = { width: `${this.props.width}px` };
@@ -38,8 +38,14 @@ module.exports = React.createClass({
 
         return (
             <div className={cx('m-input-moment', this.props.className)} {...passProps}>
-                <Calendar value={m} isEmpty={this.props.value == null} onlyFuture={this.props.onlyFuture} onChange={value => this._onChange(value)} />
-                <Time value={m} onlyFuture={this.props.onlyFuture} onChange={value => this._onChange(value)} />
+                <Calendar
+                    value={m}
+                    isEmpty={this.props.value == null}
+                    onlyFuture={this.props.onlyFuture}
+                    onlyWorkDays={this.props.onlyWorkDays}
+                    onChange={value => this._onChange(value)}
+                />
+                <Time value={m} onChange={value => this._onChange(value)} />
             </div>
         );
     },

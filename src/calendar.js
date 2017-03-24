@@ -34,7 +34,9 @@ module.exports = React.createClass({
         const currentDate   = currentMoment.date();
         const currentYear   = currentMoment.year();
 
-        const onlyFuture = this.props.onlyFuture;
+        const onlyFuture   = this.props.onlyFuture;
+        const onlyWorkDays = this.props.onlyWorkDays;
+
         const m  = this.props.value;
         const d  = m.date();
         const d1 = m.clone().subtract(1, 'month').endOf('month').date();
@@ -89,10 +91,16 @@ module.exports = React.createClass({
                     <tbody>
                     {chunk(days, 7).map((row, w) => (
                         <tr key={w}>
-                            {row.map(dayInfo => {
+                            {row.map((dayInfo, i) => {
                                 let disabled = false;
 
-                                if (onlyFuture) {
+                                if (onlyWorkDays && !disabled) {
+                                    if (i === 5 || i === 6) {
+                                        disabled = true;
+                                    }
+                                }
+
+                                if (onlyFuture && !disabled) {
                                     if (dayInfo.year < currentYear) {
                                         disabled = true;
                                     } else if (dayInfo.year === currentYear) {
@@ -116,7 +124,7 @@ module.exports = React.createClass({
                                         selected={dayInfo.month === month && dayInfo.date === d && !this.props.isEmpty}
                                         onClick={disabled ? null : () => this.selectDate(dayInfo)}
                                     />
-                                )
+                                );
                             })}
                         </tr>
                     ))}

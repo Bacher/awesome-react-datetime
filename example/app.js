@@ -33,6 +33,7 @@ var App = React.createClass({
           value={this.state.m}
           defaultTime="19:00"
           onlyFuture
+          onlyWorkDays
           onChange={this.handleChange}
         />
         </form>
