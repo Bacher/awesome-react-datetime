@@ -9,14 +9,16 @@ const Day = React.createClass({
     displayName: 'Day',
 
     render() {
-        const { i, isCurrentDate, isCurrentMonth, selected } = this.props;
+        const { i, disabled, isCurrentDate, isSelectedMonth, selected } = this.props;
 
-        const props = blacklist(this.props, 'className', 'i', 'isCurrentDate', 'isCurrentMonth', 'selected');
+        const props = blacklist(this.props, 'className', 'i', 'isCurrentDate', 'isSelectedMonth', 'selected');
 
         props.className = cx({
-            'prev-month':   !isCurrentMonth,
+            'prev-month':   !isSelectedMonth,
             'current-day':  isCurrentDate,
             'selected-day': selected,
+            'm-disabled':   disabled,
+            'm-enabled':    !disabled,
         });
 
         return <td {... props}>{i}</td>;
@@ -30,8 +32,9 @@ module.exports = React.createClass({
         const currentMoment = moment();
         const currentMonth  = currentMoment.month();
         const currentDate   = currentMoment.date();
+        const currentYear   = currentMoment.year();
 
-        const isEmpty = this.props.value == null;
+        const onlyFuture = this.props.onlyFuture;
         const m  = this.props.value;
         const d  = m.date();
         const d1 = m.clone().subtract(1, 'month').endOf('month').date();
@@ -39,6 +42,8 @@ module.exports = React.createClass({
         const d3 = m.clone().endOf('month').date();
 
         const d2_ = (d2 === 1 ? 7 : d2 - 1);
+
+        const year      = m.year();
 
         const month     = m.month();
         const prevMonth = month - 1;
@@ -55,19 +60,21 @@ module.exports = React.createClass({
         }
 
         const days = [].concat(
-            range(prevBounds[0], prevBounds[1]).map(date => ({ month: prevMonth, date })),
-            range(1, d3 + 1)                   .map(date => ({ month, date })),
-            range(nextBounds[0], nextBounds[1]).map(date => ({ month: nextMonth, date }))
+            range(prevBounds[0], prevBounds[1]).map(date => ({ month: prevMonth, date, year: (prevMonth === 12 ? year - 1 : year) })),
+            range(1, d3 + 1)                   .map(date => ({ month, date, year })),
+            range(nextBounds[0], nextBounds[1]).map(date => ({ month: nextMonth, date, year: (nextMonth === 1 ? year + 1 : year) }))
         );
 
         return (
             <div className={cx('m-calendar', this.props.className)}>
-                <div className="toolbar">
-                    <button type="button" className="prev-month" onClick={this.prevMonth}>
-                        &lt;
-                    </button>
+                <div className="m-toolbar">
+                    { month > currentMonth ?
+                        <button type="button" className="m-btn m-btn_prev" onClick={this.prevMonth}>
+                            &lt;
+                        </button> : null
+                    }
                     <span className="current-date">{m.format('MMMM YYYY')}</span>
-                    <button type="button" className="next-month" onClick={this.nextMonth}>
+                    <button type="button" className="m-btn m-btn_next" onClick={this.nextMonth}>
                         &gt;
                     </button>
                 </div>
@@ -82,16 +89,35 @@ module.exports = React.createClass({
                     <tbody>
                     {chunk(days, 7).map((row, w) => (
                         <tr key={w}>
-                            {row.map(dayInfo => (
-                                <Day
-                                    key={dayInfo.date}
-                                    i={dayInfo.date}
-                                    isCurrentMonth={month === dayInfo.month}
-                                    isCurrentDate={currentMonth === dayInfo.month && currentDate === dayInfo.date}
-                                    selected={dayInfo.month === month && dayInfo.date === d && !this.props.isEmpty}
-                                    onClick={() => this.selectDate(dayInfo)}
-                                />
-                            ))}
+                            {row.map(dayInfo => {
+                                let disabled = false;
+
+                                if (onlyFuture) {
+                                    if (dayInfo.year < currentYear) {
+                                        disabled = true;
+                                    } else if (dayInfo.year === currentYear) {
+                                        if (dayInfo.month < currentMonth) {
+                                            disabled = true;
+                                        } else if (dayInfo.month === currentMonth) {
+                                            if (dayInfo.date < currentDate) {
+                                                disabled = true;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                return (
+                                    <Day
+                                        key={dayInfo.date}
+                                        i={dayInfo.date}
+                                        disabled={disabled}
+                                        isSelectedMonth={month === dayInfo.month}
+                                        isCurrentDate={currentMonth === dayInfo.month && currentDate === dayInfo.date && currentYear === dayInfo.year}
+                                        selected={dayInfo.month === month && dayInfo.date === d && !this.props.isEmpty}
+                                        onClick={disabled ? null : () => this.selectDate(dayInfo)}
+                                    />
+                                )
+                            })}
                         </tr>
                     ))}
                     </tbody>

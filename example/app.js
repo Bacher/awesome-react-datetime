@@ -32,6 +32,7 @@ var App = React.createClass({
         <InputMoment
           value={this.state.m}
           defaultTime="19:00"
+          onlyFuture
           onChange={this.handleChange}
         />
         </form>

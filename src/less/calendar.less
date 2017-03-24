@@ -13,7 +13,6 @@
   td {
     padding: 4px 0;
     text-align: center;
-    cursor: pointer;
     color: @color-gray;
     border: 1px solid @color-gray;
   }
@@ -31,11 +30,20 @@
 
   tbody td {
     color: #666;
+  }
+
+  .m-enabled {
+    cursor: pointer;
 
     &:hover {
       background: @color-blue;
       color: @color-white;
     }
+  }
+
+  .m-disabled {
+    cursor: default;
+    background: #ecebf3;
   }
 
   .current-day {
@@ -54,14 +62,15 @@
     color: #999;
   }
 
-  .toolbar {
+  .m-toolbar {
+    position: relative;
     line-height: 30px;
     color: @color-blue;
     text-align: center;
     margin-bottom: 13px;
 
-    button {
-      position: relative;
+    .m-btn {
+      position: absolute;
       width: 30px;
       height: 30px;
       line-height: 30px;
@@ -75,14 +84,14 @@
       outline: 0;
       z-index: 5;
       cursor: pointer;
-    }
 
-    .prev-month {
-      float: left;
-    }
+      &_prev {
+        left: 0;
+      }
 
-    .next-month {
-      float: right;
+      &_next {
+        right: 0;
+      }
     }
 
     .current-date {
