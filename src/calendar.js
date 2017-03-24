@@ -68,7 +68,7 @@ module.exports = React.createClass({
         return (
             <div className={cx('m-calendar', this.props.className)}>
                 <div className="m-toolbar">
-                    { month > currentMonth ?
+                    { year > currentYear || (year === currentYear && month > currentMonth) ?
                         <button type="button" className="m-btn m-btn_prev" onClick={this.prevMonth}>
                             &lt;
                         </button> : null
