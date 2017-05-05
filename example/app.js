@@ -12,7 +12,7 @@ var App = React.createClass({
 
   getInitialState() {
     return {
-      m: null
+      m: new Date(),
     };
   },
 
@@ -41,7 +41,7 @@ var App = React.createClass({
 
   handleChange(value) {
     this.setState({
-        m: moment(value)
+        m: value,
     });
   },
 
