@@ -10,7 +10,16 @@ module.exports = React.createClass({
     displayName: 'InputMoment',
 
     render() {
-        const passProps = blacklist(this.props, 'className', 'value', 'onlyFuture', 'onlyWorkDays', 'defaultTime', 'onChange');
+        const passProps = blacklist(
+            this.props,
+            'className',
+            'value',
+            'onlyDate',
+            'onlyFuture',
+            'onlyWorkDays',
+            'defaultTime',
+            'onChange',
+        );
 
         if (this.props.width) {
             passProps.style = { width: `${this.props.width}px` };
@@ -25,6 +34,9 @@ module.exports = React.createClass({
                 const [hours, minutes] = this.props.defaultTime.split(':').map(Number);
                 m.hours(hours);
                 m.minutes(minutes);
+            } else if (this.props.onlyDate) {
+                m.hours(0);
+                m.minutes(0);
             } else {
                 m.minutes(0);
             }
@@ -45,7 +57,9 @@ module.exports = React.createClass({
                     onlyWorkDays={this.props.onlyWorkDays}
                     onChange={value => this._onChange(value)}
                 />
-                <Time value={m} onChange={value => this._onChange(value)} />
+                { this.props.onlyDate ? null :
+                    <Time value={m} onChange={value => this._onChange(value)} />
+                }
             </div>
         );
     },

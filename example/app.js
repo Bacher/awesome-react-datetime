@@ -31,9 +31,7 @@ var App = React.createClass({
         </div>
         <InputMoment
           value={this.state.m}
-          defaultTime="19:00"
-          onlyFuture
-          onlyWorkDays
+          onlyDate
           onChange={this.handleChange}
         />
         </form>
